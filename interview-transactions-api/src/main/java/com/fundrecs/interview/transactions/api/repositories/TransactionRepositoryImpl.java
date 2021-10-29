@@ -2,6 +2,8 @@ package com.fundrecs.interview.transactions.api.repositories;
 
 import com.fundrecs.interview.transactions.api.entity.Transaction;
 import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -15,6 +17,8 @@ import static com.fundrecs.interview.transactions.api.utils.TransactionsUtils.su
 
 @Repository
 public class TransactionRepositoryImpl implements TransactionRepositoryCustom {
+    private static final Logger LOG = LoggerFactory.getLogger(TransactionRepositoryImpl.class);
+
     private final MongoTemplate mongoTemplate;
 
     @Autowired
@@ -49,6 +53,7 @@ public class TransactionRepositoryImpl implements TransactionRepositoryCustom {
             this.mongoTemplate.getConverter().write(transaction, doc);
             final Update update = Update.fromDocument(doc);
             this.mongoTemplate.upsert(query, update, "transactions");
+            LOG.info("Aggregated transaction: '{}'", transaction.toTransactionDto().toString());
         } else {
             this.mongoTemplate.save(transaction);
         }

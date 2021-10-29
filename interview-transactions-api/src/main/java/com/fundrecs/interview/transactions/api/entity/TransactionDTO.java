@@ -16,4 +16,12 @@ public class TransactionDTO implements Serializable {
   private String type;
   private String amount;
 
+  @Override
+  public String toString() {
+    return "Transaction {" +
+            "date='" + date + '\'' +
+            ", type='" + type + '\'' +
+            ", amount='" + amount + '\'' +
+            '}';
+  }
 }
