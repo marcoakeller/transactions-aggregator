@@ -28,18 +28,18 @@ All services exports the respective ports to localhost, follow are the URIs to a
 4. To post a list of transactions:
 	http://localhost:8082/transaction
 ```yaml
-	[
-       {
-          "date":"11-12-2012",
-          "type":"credit",
-          "amount":"100.00"
-       },
-       {
-          "date":"11-12-2012",
-          "type":"credit",
-          "amount":"200.00"
-       }
-    ]
+[
+	{
+	  "date":"11-12-2012",
+	  "type":"credit",
+	  "amount":"100.00"
+	},
+	{
+	  "date":"11-12-2012",
+	  "type":"credit",
+	  "amount":"200.00"
+	}
+]
 ```
 
 5. To get transaction by type and date:
