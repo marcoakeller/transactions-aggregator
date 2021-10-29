@@ -17,16 +17,17 @@ a. To update service: docker-compose up -d --no-deps --build <service_name>
 All services exports the respective ports to localhost, follow are the URIs to access each Spring projects:
 
 1. To access SWAGGER documentation for the services:
-    <To Be Implemented>
+   <!--To Be Implemented-->
 
 2. To access Spring Eureka server:
-	 <To Be Implemented>
+	<!--To Be Implemented-->
 
 3. To access Zipkin Tracing server:
-	 <To Be Implemented>
+	 <!--To Be Implemented-->
 
 4. To post a list of transactions:
 	http://localhost:8082/transaction
+```yaml
 	[
        {
           "date":"11-12-2012",
@@ -39,6 +40,7 @@ All services exports the respective ports to localhost, follow are the URIs to a
           "amount":"200.00"
        }
     ]
+```
 
 5. To get transaction by type and date:
 	http://localhost:8082/transaction/credit/11-12-2012
