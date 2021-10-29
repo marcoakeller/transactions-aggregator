@@ -1,0 +1,43 @@
+version: '3.7'
+
+# services
+services:
+  # Transaction API Microservice
+  interview-transactions-api:
+    build:
+      context: ./interview-transactions-api
+      dockerfile: Dockerfile
+    expose:
+      - "8082"
+    hostname: interview-transactions-api
+    ports:
+      - "8082:8082"
+    environment:
+      - spring.profiles.active=default
+    restart: always
+    depends_on:
+      - interview-mongodb
+    networks:
+      - backend
+
+  interview-mongodb:
+    image: mongo:latest
+    container_name: interview-mongodb
+    hostname: interview-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - backend
+
+# Volumes
+volumes:
+  mongodb_data:
+
+# Networks
+networks:
+  backend:
